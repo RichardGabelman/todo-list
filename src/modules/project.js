@@ -1,9 +1,20 @@
 import { todo } from "./todo.js";
 
-class project {
+export class project {
   #name;
   #todos = [];
   constructor(name) {
+    this.#name = name;
+  }
+
+  get name() {
+    return this.#name;
+  }
+  get todos() {
+    return this.#todos;
+  }
+
+  set name(name) {
     this.#name = name;
   }
 
