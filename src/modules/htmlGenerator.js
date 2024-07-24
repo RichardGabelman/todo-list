@@ -1,5 +1,3 @@
-import close from '../assets/close.svg';
-
 export class HtmlGenerator {
   static todoGenerate(todo) {
     const todoDiv = document.createElement("li");
