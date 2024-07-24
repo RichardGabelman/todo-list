@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  --primary-color: #D41736;
 }
 
 html, body {
@@ -12,12 +13,30 @@ html, body {
 }
 
 header {
-  border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  gap: 10px;
+  font-size: 1.4rem;
+  background-color: var(--primary-color);
+  box-shadow: 0px 1px 1px rgba(30, 30, 30, 0.2);
+}
+
+header h1 {
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  font-weight: 500;
+  color: white;
+}
+
+header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 header svg {
-  width: 50px;
+  width: 65px;
+  fill: white;
 }
