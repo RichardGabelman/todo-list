@@ -1,5 +1,5 @@
-import { project } from "./modules/project.js";
-import { todo } from "./modules/todo.js";
+import { Project } from "./modules/project.js";
+import { Todo } from "./modules/todo.js";
 
 const study = new Project("First");
 
