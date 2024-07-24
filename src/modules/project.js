@@ -1,6 +1,6 @@
 import { todo } from "./todo.js";
 
-export class project {
+export class Project {
   #name;
   #todos = [];
   constructor(name) {
@@ -19,7 +19,7 @@ export class project {
   }
 
   addTodo(todoItem) {
-    if (!(todoItem instanceof todo.todo)) {
+    if (!(todoItem instanceof todo)) {
       console.log(`addTodo expected instanceof todo but got ${typeof todoItem}`);
       return;
     }
