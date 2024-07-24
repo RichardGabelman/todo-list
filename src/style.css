@@ -57,6 +57,56 @@ header svg {
 
 .projects {
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  width: calc(100%/7);
+  max-height: 100%;
+  box-shadow: 2px 2px 2px gray;
+}
+
+.project h2 {
+  text-align: center;
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  border-bottom: 1px solid gray;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border: 2px solid black;
+  background-color: var(--primary-color);
+  color: white;
+  padding-bottom: 8px;
+  padding-top: 4px;
+}
+
+.todos {
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+
+.addTodo {
+  cursor: pointer;
+  width: 100%;
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  color: white;
+  border: 2px solid black;
+  margin-top: -2px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: lightgreen;
+  font-weight: 300;
+  font-size: 25px;
+  padding-bottom: 6px;
+  padding-top: 4px;
+}
+
+.addTodo:hover {
+  background-color: green;
 }
 
 .controls {
@@ -75,12 +125,12 @@ header svg {
   color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
   font-size: 60px;
-  padding: 0px 120px;
+  width: calc(100%/7);
   padding-bottom: 8px;
   box-shadow: 2px 2px 3px;
   text-align: center;
 }
 
 #addProject:hover {
-  background-color: lightgray;
+  background-color: lightgreen;
 }
