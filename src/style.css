@@ -69,7 +69,7 @@ header svg {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  width: calc(100%/7);
+  width: calc(100%/6);
   max-height: 100%;
   box-shadow: 2px 2px 2px gray;
 }
@@ -85,6 +85,35 @@ header svg {
 .todos {
   border-left: 1px solid black;
   border-right: 1px solid black;
+}
+
+.todo {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkTitle {
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  font-weight: 200;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 12px;
+}
+
+.checkTitle input {
+  cursor: pointer;
+}
+
+.todo svg {
+  cursor: pointer;
+  width: 25px;
+  fill: black;
+}
+
+.todo svg:hover {
+  fill: red;
 }
 
 .header,
