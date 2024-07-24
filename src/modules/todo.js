@@ -1,4 +1,4 @@
-class todo {
+export class todo {
   #title;
   #description;
   #dueDate;
