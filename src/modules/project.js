@@ -1,4 +1,4 @@
-import { todo } from "./todo.js";
+import { Todo } from "./todo.js";
 
 export class Project {
   #name;
@@ -19,7 +19,7 @@ export class Project {
   }
 
   addTodo(todoItem) {
-    if (!(todoItem instanceof todo)) {
+    if (!(todoItem instanceof Todo)) {
       console.log(`addTodo expected instanceof todo but got ${typeof todoItem}`);
       return;
     }
