@@ -1,5 +1,6 @@
 import { Project } from "./modules/project.js";
 import { Todo } from "./modules/todo.js";
+import './style.css';
 
 const study = new Project("First");
 
