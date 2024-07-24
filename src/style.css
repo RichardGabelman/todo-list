@@ -92,6 +92,11 @@ header svg {
   padding: 8px 12px;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+
+li:hover {
+  background-color: lightgray;
 }
 
 .checkTitle {
@@ -100,6 +105,7 @@ header svg {
   font-size: 0.9rem;
   display: flex;
   gap: 12px;
+  color: black;
 }
 
 .checkTitle input {
