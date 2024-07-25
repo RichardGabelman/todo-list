@@ -1,32 +1,20 @@
 import { HtmlGenerator } from "./htmlGenerator";
-import { Project } from "./project";
-import { ProjectManager } from "./projectManager";
-import { EventSetup } from "./eventSetup";
+import { projectManager } from "..";
 
 export class PageManager {
-  #projectManager;
-  #currentPage;
-  constructor() {
-    this.#projectManager = new ProjectManager();
-    this.#projectManager.addProject(new Project('project'));
-    EventSetup.headerEventSetup();
-    this.goToHome();
-  }
-  get projectManager() {
-    return this.#projectManager;
-  }
-  goToHome() {
-    if (this.#currentPage == 'home') {
+  static #currentPage;
+  static goToHome() {
+    if (PageManager.#currentPage == 'home') {
       return;
     }
     const content = document.querySelector('.content');
     content.textContent = '';
-    content.appendChild(HtmlGenerator.projectViewGenerate(this.#projectManager));
+    content.appendChild(HtmlGenerator.projectViewGenerate(projectManager));
     // TODO: Get home page event listeners set up
-    this.#currentPage = 'home';
+    PageManager.#currentPage = 'home';
   }
-  update() {
-    this.#currentPage = 'needs update';
-    this.goToHome();
+  static update() {
+    PageManager.#currentPage = 'needs update';
+    PageManager.goToHome();
   }
 }

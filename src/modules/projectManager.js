@@ -4,6 +4,7 @@ export class ProjectManager {
   #projects;
   constructor() {
     this.#projects = [];
+    this.addProject(new Project('project'));
   }
   get projects() {
     return this.#projects;
