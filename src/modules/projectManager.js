@@ -2,15 +2,19 @@ import { PageManager } from './pageManager.js';
 import { Project } from './project.js';
 
 export class ProjectManager {
+
   static #projects = [new Project('project')];
+
   static getProjects() {
     return ProjectManager.#projects;
   }
+
   static addProject() {
     console.log(ProjectManager.#projects);
     ProjectManager.#projects.push(new Project('project'));
     PageManager.update();
   }
+  
   static removeProject(index) {
     if (index >= (ProjectManager.#projects.length)) {
       console.log(`Tried to remove index ${index} but we only have ${ProjectManager.#projects.length} projects!`);

@@ -1,9 +1,11 @@
 export class Todo {
+
   #title;
   #description;
   #dueDate;
   #priority;
   #completed;
+
   constructor(title, description, dueDate, priority, completed) {
     this.#title = title;
     this.#description = description;
@@ -40,6 +42,7 @@ export class Todo {
   set priority(priority) {
     this.#priority = priority;
   }
+  
   toggleCompleted() {
     if (this.#completed == true) {
       this.#completed = false;

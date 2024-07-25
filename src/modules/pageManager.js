@@ -2,13 +2,17 @@ import { HtmlGenerator } from "./htmlGenerator.js";
 import { EventSetup } from "./eventSetup.js";
 
 export class PageManager {
+
   static #currentPage;
+
   static getCurrentPage() {
     return this.#currentPage;
   }
+
   static setCurrentPage(page) {
     this.#currentPage = page;
   }
+
   static goToHome() {
     if (PageManager.getCurrentPage() == 'home') {
       return;
@@ -19,10 +23,12 @@ export class PageManager {
     PageManager.setCurrentPage('home');
     EventSetup.homeEventSetup();
   }
+
   static update() {
     PageManager.setCurrentPage('needs update');
     PageManager.goToHome();
   }
+  
   static goToTodo(projectIndex, todoIndex) {
     const content = document.querySelector('.content');
     content.textContent = '';

@@ -1,6 +1,7 @@
 import { ProjectManager } from './projectManager.js';
 
 export class HtmlGenerator {
+  
   static todoGenerate(todo, todoIndex, projectIndex) {
     const todoDiv = document.createElement("li");
     todoDiv.classList.add('todo');
