@@ -1,12 +1,14 @@
 import { HtmlGenerator } from "./htmlGenerator";
+import { Project } from "./project";
 import { ProjectManager } from "./projectManager";
 
-class PageManager {
+export class PageManager {
   #projectManager;
   #currentPage;
   constructor() {
     this.#projectManager = new ProjectManager();
-    this.#currentPage = 'home';
+    this.#projectManager.addProject(new Project('project'));
+    this.goToHome();
   }
   get ProjectManager() {
     return this.#projectManager;
@@ -16,8 +18,9 @@ class PageManager {
       return;
     }
     const content = document.querySelector('.content');
+    content.textContent = '';
     content.appendChild(HtmlGenerator.projectViewGenerate(this.#projectManager));
     // TODO: Get home page event listeners set up
+    this.#currentPage = 'home';
   }
-
 }
