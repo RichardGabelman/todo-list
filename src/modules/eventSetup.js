@@ -15,6 +15,17 @@ export class EventSetup {
     }
     // TODO: Add event listeners to each project header that expands to project view
     // TODO: Add event listeners to each todo item that expands to todo view
+    // Add event listeners to todo closer
+    const closeIcons = document.querySelectorAll('ul svg');
+    if (closeIcons) {
+      for (let i = 0; i < closeIcons.length; i++) {
+        closeIcons[i].addEventListener('click', () => {
+          ProjectManager.getProjects()[closeIcons[i].getAttribute("project-index")].removeTodo(closeIcons[i].getAttribute("todo-index"));          
+        });
+      }
+    }
+    // TODO: Add event listener to + todo
+    // Add event listener to + project
     const addProjectBtn = document.querySelector('#addProject');
     addProjectBtn.addEventListener('click', ProjectManager.addProject);
   }

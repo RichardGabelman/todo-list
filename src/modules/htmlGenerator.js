@@ -1,7 +1,7 @@
 import { ProjectManager } from './projectManager.js';
 
 export class HtmlGenerator {
-  static todoGenerate(todo) {
+  static todoGenerate(todo, todoIndex, projectIndex) {
     const todoDiv = document.createElement("li");
     todoDiv.classList.add('todo');
 
@@ -27,6 +27,8 @@ export class HtmlGenerator {
     const path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
     path.setAttribute('d', "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z");
     closeIcon.appendChild(path);
+    closeIcon.setAttribute("todo-index", todoIndex);
+    closeIcon.setAttribute("project-index", projectIndex);
 
     todoDiv.appendChild(checkTitle);
     todoDiv.appendChild(closeIcon);
@@ -34,7 +36,7 @@ export class HtmlGenerator {
     return todoDiv;
   }
 
-  static projectGenerate(project) {
+  static projectGenerate(project, projectIndex) {
     const projectDiv = document.createElement("div");
     projectDiv.classList.add('project');
 
@@ -46,12 +48,12 @@ export class HtmlGenerator {
     todos.classList.add('todos');
 
     for (let i = 0; i < project.todos.length; i++) {
-      todos.appendChild(this.todoGenerate(project.todos[i]));
+      todos.appendChild(this.todoGenerate(project.todos[i], i, projectIndex));
     }
 
     const addTodo = document.createElement('btn');
     addTodo.classList.add("addTodo", "footer");
-    addTodo.textContent = "+ todo +";
+    addTodo.textContent = "+ to do +";
 
     projectDiv.appendChild(name);
     projectDiv.appendChild(todos);
@@ -68,7 +70,7 @@ export class HtmlGenerator {
     projects.classList.add('projects');
 
     for (let i = 0; i < ProjectManager.getProjects().length; i++) {
-      projects.appendChild(this.projectGenerate(ProjectManager.getProjects()[i]));
+      projects.appendChild(this.projectGenerate(ProjectManager.getProjects()[i], i));
     }
 
     const controls = document.createElement("div");
