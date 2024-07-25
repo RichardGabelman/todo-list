@@ -1,3 +1,4 @@
+import { PageManager } from "./pageManager.js";
 import { Todo } from "./todo.js";
 
 export class Project {
@@ -24,7 +25,7 @@ export class Project {
       return;
     }
     this.#todos.push(todoItem);
-    // TODO: Update visual representation
+    PageManager.update();
   }
   removeTodo(index) {
     if (index >= (this.#todos.length)) {
@@ -32,6 +33,6 @@ export class Project {
       return;
     }
     this.#todos.splice(index, 1);
-    // TODO: Update visual representation
+    PageManager.update();
   }
 }

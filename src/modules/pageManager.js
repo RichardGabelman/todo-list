@@ -1,5 +1,5 @@
-import { HtmlGenerator } from "./htmlGenerator";
-import { projectManager } from "..";
+import { HtmlGenerator } from "./htmlGenerator.js";
+import { dataManager } from "..";
 
 export class PageManager {
   static #currentPage;
@@ -9,7 +9,7 @@ export class PageManager {
     }
     const content = document.querySelector('.content');
     content.textContent = '';
-    content.appendChild(HtmlGenerator.projectViewGenerate(projectManager));
+    content.appendChild(HtmlGenerator.projectViewGenerate(dataManager.projectManager));
     // TODO: Get home page event listeners set up
     PageManager.#currentPage = 'home';
   }

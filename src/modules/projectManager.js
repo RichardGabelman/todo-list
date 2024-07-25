@@ -1,10 +1,10 @@
+import { PageManager } from './pageManager.js';
 import { Project } from './project.js';
 
 export class ProjectManager {
   #projects;
   constructor() {
-    this.#projects = [];
-    this.addProject(new Project('project'));
+    this.#projects = [new Project('project')];
   }
   get projects() {
     return this.#projects;
@@ -15,7 +15,7 @@ export class ProjectManager {
       return;
     }
     this.#projects.push(project);
-    // TODO: Update visual representation
+    PageManager.update();
   }
   removeProject(index) {
     if (index >= (this.#projects.length)) {
@@ -23,6 +23,6 @@ export class ProjectManager {
       return;
     }
     this.#projects.splice(index, 1);
-    // TODO: Update visual representation
+    PageManager.update();
   }
 }

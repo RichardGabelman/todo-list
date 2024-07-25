@@ -1,11 +1,12 @@
-import { ProjectManager } from "./modules/projectManager.js";
+import { DataManager } from "./modules/dataManager.js";
 import { PageManager } from "./modules/pageManager.js";
 import { Todo } from "./modules/todo.js";
+import { EventSetup } from "./modules/eventSetup.js";
 import './style.css';
 
-const projectManager = new ProjectManager();
-projectManager.projects[0].addTodo(new Todo('This is a todo title'));
-projectManager.projects[0].addTodo(new Todo('This is another todo title'));
-PageManager.update();
+const dataManager = new DataManager();
+dataManager.projectManager.projects[0].addTodo(new Todo('This is a todo title'));
+dataManager.projectManager.projects[0].addTodo(new Todo('This is another todo title'));
+EventSetup.headerEventSetup();
 
-export { projectManager };
+export { dataManager };
