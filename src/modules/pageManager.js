@@ -23,4 +23,11 @@ export class PageManager {
     PageManager.setCurrentPage('needs update');
     PageManager.goToHome();
   }
+  static goToTodo(projectIndex, todoIndex) {
+    const content = document.querySelector('.content');
+    content.textContent = '';
+    content.appendChild(HtmlGenerator.todoPageGenerate(projectIndex, todoIndex));
+    PageManager.setCurrentPage('todo');
+    EventSetup.todoEventSetup();
+  }
 }

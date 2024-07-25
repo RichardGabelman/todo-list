@@ -16,6 +16,14 @@ export class EventSetup {
     }
     // TODO: Add event listeners to each project header that expands to project view
     // TODO: Add event listeners to each todo item that expands to todo view
+    const todoNames = document.querySelectorAll('.checkTitle h3');
+    if (todoNames) {
+      for (let i = 0; i < todoNames.length; i++) {
+        todoNames[i].addEventListener('click', () => {
+          PageManager.goToTodo(todoNames[i].getAttribute('project-index'), todoNames[i].getAttribute('todo-index'));
+        })
+      }
+    }
     // Add event listeners to todo closer
     const closeIcons = document.querySelectorAll('ul svg');
     if (closeIcons) {
@@ -25,7 +33,7 @@ export class EventSetup {
         });
       }
     }
-    // TODO: Add event listener to + todo
+    // Add event listener to + todo
     const addTodos = document.querySelectorAll('.addTodo');
     if (addTodos) {
       for (let i = 0; i < addTodos.length; i++) {
@@ -37,5 +45,12 @@ export class EventSetup {
     // Add event listener to + project
     const addProjectBtn = document.querySelector('#addProject');
     addProjectBtn.addEventListener('click', ProjectManager.addProject);
+  }
+  static todoEventSetup() {
+    if (PageManager.getCurrentPage() != 'todo') {
+      console.log(`Trying to setup todopage event listeners when page is ${PageManager.getCurrentPage()}`);
+      return;
+    }
+
   }
 }

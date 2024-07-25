@@ -15,6 +15,8 @@ export class HtmlGenerator {
     }
     const title = document.createElement("h3");
     title.textContent = todo.title;
+    title.setAttribute('project-index', projectIndex);
+    title.setAttribute('todo-index', todoIndex);
     checkTitle.appendChild(checkbox);
     checkTitle.appendChild(title);
 
@@ -86,5 +88,26 @@ export class HtmlGenerator {
     homepage.appendChild(controls);
 
     return homepage;
+  }
+
+  static todoPageGenerate(projectIndex, todoIndex) {
+    const todoPage = document.createElement("div");
+    todoPage.classList.add('todopage');
+
+    const backIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    backIcon.setAttribute('viewBox', '0 0 24 24');
+    const svgTitle = document.createElementNS("http://www.w3.org/2000/svg", 'title');
+    svgTitle.textContent = "arrow-left";
+    backIcon.appendChild(svgTitle);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+    path.setAttribute('d', "M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z");
+    backIcon.appendChild(path);
+    todoPage.appendChild(backIcon);
+
+    const form = document.createElement('form');
+
+    todoPage.appendChild(form);
+
+    return todoPage;
   }
 }
