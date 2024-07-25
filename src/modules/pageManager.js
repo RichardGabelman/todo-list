@@ -10,7 +10,7 @@ export class PageManager {
     this.#projectManager.addProject(new Project('project'));
     this.goToHome();
   }
-  get ProjectManager() {
+  get projectManager() {
     return this.#projectManager;
   }
   goToHome() {
@@ -22,5 +22,9 @@ export class PageManager {
     content.appendChild(HtmlGenerator.projectViewGenerate(this.#projectManager));
     // TODO: Get home page event listeners set up
     this.#currentPage = 'home';
+  }
+  update() {
+    this.#currentPage = 'needs update';
+    this.goToHome();
   }
 }
