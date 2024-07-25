@@ -1,6 +1,7 @@
 import { HtmlGenerator } from "./htmlGenerator";
 import { Project } from "./project";
 import { ProjectManager } from "./projectManager";
+import { EventSetup } from "./eventSetup";
 
 export class PageManager {
   #projectManager;
@@ -8,6 +9,7 @@ export class PageManager {
   constructor() {
     this.#projectManager = new ProjectManager();
     this.#projectManager.addProject(new Project('project'));
+    EventSetup.headerEventSetup();
     this.goToHome();
   }
   get projectManager() {
