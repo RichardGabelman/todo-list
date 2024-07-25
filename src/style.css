@@ -67,6 +67,7 @@ header svg {
   align-self: flex-start;
   box-shadow: 2px 2px 2px gray;
   margin-bottom: -55px;
+  margin-left: -5%;
 }
 
 .todopage svg:hover {
@@ -76,6 +77,25 @@ header svg {
 .todopage form {
   width: 80%;
   height: 100%;
+  padding: 30px 50px;
+  font-size: 1.3rem;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px gray;
+}
+
+.labelInput {
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.labelInput input {
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  font-size: 1.5rem;
+  padding: 3px 8px;
+  width: 25rem;
+  border-radius: 10px;
   border: 1px solid black;
 }
 

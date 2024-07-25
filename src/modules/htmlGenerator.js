@@ -1,7 +1,7 @@
 import { ProjectManager } from './projectManager.js';
 
 export class HtmlGenerator {
-  
+
   static todoGenerate(todo, todoIndex, projectIndex) {
     const todoDiv = document.createElement("li");
     todoDiv.classList.add('todo');
@@ -106,6 +106,21 @@ export class HtmlGenerator {
     todoPage.appendChild(backIcon);
 
     const form = document.createElement('form');
+
+    const labelInputTitle = document.createElement('div');
+    labelInputTitle.classList.add('labelInput');
+    const labelTitle = document.createElement('label');
+    labelTitle.textContent = 'Title:';
+    labelTitle.setAttribute('for', 'title');
+    const inputTitle = document.createElement('input');
+    inputTitle.setAttribute('type', 'text');
+    inputTitle.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].title);
+    inputTitle.setAttribute('id', 'title');
+    inputTitle.setAttribute('maxLength', 35);
+    labelInputTitle.appendChild(labelTitle);
+    labelInputTitle.appendChild(inputTitle);
+
+    form.appendChild(labelInputTitle);
 
     todoPage.appendChild(form);
 

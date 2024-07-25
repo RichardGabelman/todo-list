@@ -3,7 +3,7 @@ import { ProjectManager } from "./projectManager.js";
 import { Todo } from "./todo.js";
 
 export class EventSetup {
-  
+
   static headerEventSetup() {
     const headerTitle = document.querySelector('header h1');
     const headerIcon = document.querySelector('header svg');
@@ -57,6 +57,9 @@ export class EventSetup {
       console.log(`Trying to setup todopage event listeners when page is ${PageManager.getCurrentPage()}`);
       return;
     }
+
+    const backArrow = document.querySelector('.todopage svg');
+    backArrow.addEventListener('click', PageManager.goToHome);
 
   }
 }
