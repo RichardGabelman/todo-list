@@ -5,9 +5,7 @@ import { HtmlGenerator } from "./modules/htmlGenerator.js";
 import './style.css';
 
 const manager = new ProjectManager();
-const study = new Project("First");
-const newTodo = new Todo("test", "this is a test description", "today", 1);
-study.addTodo(newTodo);
+const study = new Project("project");
 manager.addProject(study);
 
 const content = document.querySelector(".content");
