@@ -1,20 +1,26 @@
 import { HtmlGenerator } from "./htmlGenerator.js";
-import { dataManager } from "..";
+import { EventSetup } from "./eventSetup.js";
 
 export class PageManager {
   static #currentPage;
+  static getCurrentPage() {
+    return this.#currentPage;
+  }
+  static setCurrentPage(page) {
+    this.#currentPage = page;
+  }
   static goToHome() {
-    if (PageManager.#currentPage == 'home') {
+    if (PageManager.getCurrentPage() == 'home') {
       return;
     }
     const content = document.querySelector('.content');
     content.textContent = '';
-    content.appendChild(HtmlGenerator.projectViewGenerate(dataManager.projectManager));
-    // TODO: Get home page event listeners set up
-    PageManager.#currentPage = 'home';
+    content.appendChild(HtmlGenerator.homePageGenerate());
+    PageManager.setCurrentPage('home');
+    EventSetup.homeEventSetup();
   }
   static update() {
-    PageManager.#currentPage = 'needs update';
+    PageManager.setCurrentPage('needs update');
     PageManager.goToHome();
   }
 }

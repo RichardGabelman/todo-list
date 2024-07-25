@@ -2,27 +2,21 @@ import { PageManager } from './pageManager.js';
 import { Project } from './project.js';
 
 export class ProjectManager {
-  #projects;
-  constructor() {
-    this.#projects = [new Project('project')];
+  static #projects = [new Project('project')];
+  static getProjects() {
+    return ProjectManager.#projects;
   }
-  get projects() {
-    return this.#projects;
-  }
-  addProject(project) {
-    if (!(project instanceof Project)) {
-      console.log(`addProject expected instanceof Project but got ${typeof project}`);
-      return;
-    }
-    this.#projects.push(project);
+  static addProject() {
+    console.log(ProjectManager.#projects);
+    ProjectManager.#projects.push(new Project('project'));
     PageManager.update();
   }
-  removeProject(index) {
-    if (index >= (this.#projects.length)) {
-      console.log(`Tried to remove index ${index} but we only have ${this.#projects.length} projects!`);
+  static removeProject(index) {
+    if (index >= (ProjectManager.#projects.length)) {
+      console.log(`Tried to remove index ${index} but we only have ${ProjectManager.#projects.length} projects!`);
       return;
     }
-    this.#projects.splice(index, 1);
+    ProjectManager.#projects.splice(index, 1);
     PageManager.update();
   }
 }

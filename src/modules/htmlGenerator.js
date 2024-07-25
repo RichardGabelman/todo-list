@@ -1,3 +1,5 @@
+import { ProjectManager } from './projectManager.js';
+
 export class HtmlGenerator {
   static todoGenerate(todo) {
     const todoDiv = document.createElement("li");
@@ -58,15 +60,15 @@ export class HtmlGenerator {
     return projectDiv;
   }
 
-  static projectViewGenerate(projectManager) {
-    const projectView = document.createElement("div");
-    projectView.classList.add('projectView');
+  static homePageGenerate() {
+    const homepage = document.createElement("div");
+    homepage.classList.add('homepage');
 
     const projects = document.createElement("div");
     projects.classList.add('projects');
 
-    for (let i = 0; i < projectManager.projects.length; i++) {
-      projects.appendChild(this.projectGenerate(projectManager.projects[i]));
+    for (let i = 0; i < ProjectManager.getProjects().length; i++) {
+      projects.appendChild(this.projectGenerate(ProjectManager.getProjects()[i]));
     }
 
     const controls = document.createElement("div");
@@ -77,9 +79,9 @@ export class HtmlGenerator {
     addProject.textContent = '+';
     controls.appendChild(addProject);
 
-    projectView.appendChild(projects);
-    projectView.appendChild(controls);
+    homepage.appendChild(projects);
+    homepage.appendChild(controls);
 
-    return projectView;
+    return homepage;
   }
 }
