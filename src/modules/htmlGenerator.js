@@ -54,6 +54,7 @@ export class HtmlGenerator {
     const addTodo = document.createElement('btn');
     addTodo.classList.add("addTodo", "footer");
     addTodo.textContent = "+ to do +";
+    addTodo.setAttribute('project-index', projectIndex);
 
     projectDiv.appendChild(name);
     projectDiv.appendChild(todos);

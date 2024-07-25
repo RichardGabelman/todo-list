@@ -1,5 +1,6 @@
 import { PageManager } from "./pageManager.js";
 import { ProjectManager } from "./projectManager.js";
+import { Todo } from "./todo.js";
 
 export class EventSetup {
   static headerEventSetup() {
@@ -25,6 +26,14 @@ export class EventSetup {
       }
     }
     // TODO: Add event listener to + todo
+    const addTodos = document.querySelectorAll('.addTodo');
+    if (addTodos) {
+      for (let i = 0; i < addTodos.length; i++) {
+        addTodos[i].addEventListener('click', () => {
+          ProjectManager.getProjects()[addTodos[i].getAttribute("project-index")].addTodo(new Todo("Added todo!"));
+        });
+      }
+    }
     // Add event listener to + project
     const addProjectBtn = document.querySelector('#addProject');
     addProjectBtn.addEventListener('click', ProjectManager.addProject);
