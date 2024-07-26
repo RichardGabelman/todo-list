@@ -17,6 +17,16 @@ export class EventSetup {
       return;
     }
     // TODO: Add event listeners to each project header that expands to project view
+    // Add event listeners to project closers
+    const projectClose = document.querySelectorAll('.header svg');
+    if (projectClose) {
+      for (let i = 0; i < projectClose.length; i++) {
+        projectClose[i].addEventListener('click', () => {
+          ProjectManager.removeProject(projectClose[i].getAttribute("project-index"));
+        })
+      }
+    }
+
     // Add event listeners to each todo item that expands to todo view
     const todoNames = document.querySelectorAll('.checkTitle h3');
     if (todoNames) {
@@ -43,6 +53,16 @@ export class EventSetup {
       for (let i = 0; i < addTodos.length; i++) {
         addTodos[i].addEventListener('click', () => {
           ProjectManager.getProjects()[addTodos[i].getAttribute("project-index")].addTodo(new Todo("Added todo!"));
+        });
+      }
+    }
+
+    // Add event listeners to todo checkboxes
+    const markDone = document.querySelectorAll('.checkTitle input');
+    if (markDone) {
+      for (let i = 0; i < markDone.length; i++) {
+        markDone[i].addEventListener('click', () => {
+          ProjectManager.getProjects()[markDone[i].getAttribute('project-index')].todos[markDone[i].getAttribute('todo-index')].toggleCompleted();
         });
       }
     }

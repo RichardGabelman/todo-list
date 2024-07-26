@@ -1,12 +1,14 @@
+import { PageManager } from "./pageManager";
+
 export class Todo {
 
-  #title = '';
-  #description = '';
-  #dueDate = '';
-  #priority = 0;
-  #completed = false;
+  #title;
+  #description;
+  #dueDate;
+  #priority;
+  #completed;
 
-  constructor(title, description, dueDate, priority, completed) {
+  constructor(title = '', description = '', dueDate = '', priority = 0, completed = false) {
     this.#title = title;
     this.#description = description;
     this.#dueDate = dueDate;
@@ -49,5 +51,6 @@ export class Todo {
     } else {
       this.#completed = true;
     }
+    PageManager.update();
   }
 }

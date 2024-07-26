@@ -139,12 +139,29 @@ header svg {
   box-shadow: 2px 2px 2px gray;
 }
 
-.project h2 {
+.header {
+  position: relative;
+  display: flex;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-color: var(--primary-color);
   padding-bottom: 8px;
   padding-top: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.header svg {
+  position: absolute;
+  width: 25px;
+  fill: white;
+  cursor: pointer;
+  right: 12px;
+  top: 8px;
+}
+
+.header svg:hover {
+  fill: black;
 }
 
 .todos {
@@ -189,12 +206,15 @@ header svg {
 
 .header,
 .footer {
-  cursor: pointer;
   text-align: center;
   font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
   width: 100%;
   color: white;
   border: 1px solid black;
+}
+
+.footer {
+  cursor: pointer;
 }
 
 .addTodo {
@@ -236,4 +256,8 @@ header svg {
 
 #addProject:hover {
   background-color: lightgreen;
+}
+
+.completed {
+  text-decoration: line-through;
 }

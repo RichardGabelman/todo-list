@@ -11,13 +11,16 @@ export class HtmlGenerator {
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    if (todo.completed) {
-      checkbox.checked = true;
-    }
+    checkbox.setAttribute("project-index", projectIndex);
+    checkbox.setAttribute("todo-index", todoIndex);
     const title = document.createElement("h3");
     title.textContent = todo.title;
     title.setAttribute('project-index', projectIndex);
     title.setAttribute('todo-index', todoIndex);
+    if (todo.completed) {
+      title.classList.add('completed');
+      checkbox.checked = true;
+    }
     checkTitle.appendChild(checkbox);
     checkTitle.appendChild(title);
 
@@ -43,9 +46,24 @@ export class HtmlGenerator {
     const projectDiv = document.createElement("div");
     projectDiv.classList.add('project');
 
+    const head = document.createElement('div');
+    head.classList.add('header');
     const name = document.createElement("h2");
-    name.classList.add("name", "header");
+    name.classList.add("name");
     name.textContent = project.name;
+  
+    const closeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    closeIcon.setAttribute('viewBox', '0 0 24 24');
+    const svgTitle = document.createElementNS("http://www.w3.org/2000/svg", 'title');
+    svgTitle.textContent = "close";
+    closeIcon.appendChild(svgTitle);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+    path.setAttribute('d', "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z");
+    closeIcon.appendChild(path);
+    closeIcon.setAttribute('project-index', projectIndex);  
+
+    head.appendChild(name);
+    head.appendChild(closeIcon);
 
     const todos = document.createElement("ul");
     todos.classList.add('todos');
@@ -59,7 +77,7 @@ export class HtmlGenerator {
     addTodo.textContent = "+ to do +";
     addTodo.setAttribute('project-index', projectIndex);
 
-    projectDiv.appendChild(name);
+    projectDiv.appendChild(head);
     projectDiv.appendChild(todos);
     projectDiv.appendChild(addTodo);
 
