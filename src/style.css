@@ -75,28 +75,43 @@ header svg {
 }
 
 .todopage form {
+  display: flex;
+  flex-direction: column;
   width: 80%;
   height: 100%;
   padding: 30px 50px;
   font-size: 1.3rem;
   border: 1px solid black;
   box-shadow: 2px 2px 2px gray;
+  border-radius: 25px;
+  gap: 15px;
 }
 
 .labelInput {
   font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
 }
 
-.labelInput input {
+.labelInput input:focus,
+.labelInput textarea:focus {
+  outline-width: 0;
+  box-shadow: 2px 2px 4px black;
+}
+
+.labelInput input,
+.labelInput textarea {
   font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
   font-size: 1.5rem;
   padding: 3px 8px;
   width: 25rem;
   border-radius: 10px;
   border: 1px solid black;
+  box-shadow: 2px 2px 2px gray;
+  text-align: center;
+  resize: none;
 }
 
 .homepage {

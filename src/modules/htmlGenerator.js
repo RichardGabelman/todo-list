@@ -110,7 +110,7 @@ export class HtmlGenerator {
     const labelInputTitle = document.createElement('div');
     labelInputTitle.classList.add('labelInput');
     const labelTitle = document.createElement('label');
-    labelTitle.textContent = 'Title:';
+    labelTitle.textContent = 'To Do';
     labelTitle.setAttribute('for', 'title');
     const inputTitle = document.createElement('input');
     inputTitle.setAttribute('type', 'text');
@@ -120,7 +120,22 @@ export class HtmlGenerator {
     labelInputTitle.appendChild(labelTitle);
     labelInputTitle.appendChild(inputTitle);
 
+    const labelInputDescription = document.createElement('div');
+    labelInputDescription.classList.add('labelInput');
+    const labelDescription = document.createElement('label');
+    labelDescription.textContent = 'Description';
+    labelDescription.setAttribute('for', 'description');
+    const inputDescription = document.createElement('textarea');
+    inputDescription.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].description);
+    inputDescription.setAttribute('id', 'description');
+    inputDescription.setAttribute('cols', 45);
+    inputDescription.setAttribute('rows', 6);
+    labelInputDescription.appendChild(labelDescription);
+    labelInputDescription.appendChild(inputDescription);
+
     form.appendChild(labelInputTitle);
+    form.appendChild(labelInputDescription);
+
 
     todoPage.appendChild(form);
 
