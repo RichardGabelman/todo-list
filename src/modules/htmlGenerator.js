@@ -152,7 +152,7 @@ export class HtmlGenerator {
     labelDescription.textContent = 'Description';
     labelDescription.setAttribute('for', 'description');
     const inputDescription = document.createElement('textarea');
-    inputDescription.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].description);
+    inputDescription.value = ProjectManager.getProjects()[projectIndex].todos[todoIndex].description;
     inputDescription.setAttribute('id', 'description');
     inputDescription.setAttribute('cols', 45);
     inputDescription.setAttribute('rows', 6);
