@@ -1,6 +1,7 @@
 import { PageManager } from "./pageManager.js";
 import { ProjectManager } from "./projectManager.js";
 import { Todo } from "./todo.js";
+import { format, parseISO } from "date-fns";
 
 export class EventSetup {
 
@@ -101,7 +102,7 @@ export class EventSetup {
 
       todoObj.title = title;
       todoObj.description = description;
-      todoObj.dueDate = new Date(dateValue);
+      todoObj.dueDate = parseISO(dateValue);
       todoObj.priority = priority;
       PageManager.goToHome();
     });

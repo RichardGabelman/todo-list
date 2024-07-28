@@ -1,5 +1,5 @@
 import { ProjectManager } from './projectManager.js';
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 export class HtmlGenerator {
 
