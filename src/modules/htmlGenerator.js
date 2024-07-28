@@ -8,6 +8,9 @@ export class HtmlGenerator {
     todoDiv.classList.add('todo');
 
     const priorityColor = document.createElement('div');
+    const priority = todo.priority;
+    priorityColor.classList.add(priority);
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.setAttribute("project-index", projectIndex);
@@ -102,7 +105,7 @@ export class HtmlGenerator {
     const controls = document.createElement("div");
     controls.classList.add("controls");
 
-    const addProject = document.createElement("btn");
+    const addProject = document.createElement("button");
     addProject.setAttribute('id', 'addProject');
     addProject.textContent = '+';
     controls.appendChild(addProject);
@@ -234,10 +237,14 @@ export class HtmlGenerator {
     }
     field.appendChild(radios);
 
+    const save = document.createElement('button');
+    save.textContent = 'Save';
+
     form.appendChild(labelInputTitle);
     form.appendChild(labelInputDescription);
     form.appendChild(labelInputDate);
     form.appendChild(field);
+    form.appendChild(save);
 
 
     todoPage.appendChild(form);

@@ -1,6 +1,5 @@
 import { PageManager } from "./pageManager.js";
 import { ProjectManager } from "./projectManager.js";
-import { Project } from "./project.js";
 import { Todo } from "./todo.js";
 
 export class EventSetup {
