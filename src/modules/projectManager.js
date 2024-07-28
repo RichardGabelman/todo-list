@@ -9,6 +9,10 @@ export class ProjectManager {
     return ProjectManager.#projects;
   }
 
+  static setProjects(projects) {
+    this.#projects = projects;
+  }
+
   static addProject() {
     ProjectManager.#projects.push(new Project('project'));
     PageManager.update();
