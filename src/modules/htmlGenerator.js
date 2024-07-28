@@ -80,8 +80,10 @@ export class HtmlGenerator {
     const todos = document.createElement("ul");
     todos.classList.add('todos');
 
-    for (let i = 0; i < project.todos.length; i++) {
-      todos.appendChild(this.todoGenerate(project.todos[i], i, projectIndex));
+    if (project && project.todos) {
+      for (let i = 0; i < project.todos.length; i++) {
+        todos.appendChild(this.todoGenerate(project.todos[i], i, projectIndex));
+      }
     }
 
     const addTodo = document.createElement('btn');
@@ -103,8 +105,10 @@ export class HtmlGenerator {
     const projects = document.createElement("div");
     projects.classList.add('projects');
 
-    for (let i = 0; i < ProjectManager.getProjects().length; i++) {
-      projects.appendChild(this.projectGenerate(ProjectManager.getProjects()[i], i));
+    if (ProjectManager.projects) {
+      for (let i = 0; i < ProjectManager.projects.length; i++) {
+        projects.appendChild(this.projectGenerate(ProjectManager.projects[i], i));
+      }
     }
 
     const controls = document.createElement("div");
@@ -145,7 +149,7 @@ export class HtmlGenerator {
     labelTitle.setAttribute('for', 'title');
     const inputTitle = document.createElement('input');
     inputTitle.setAttribute('type', 'text');
-    inputTitle.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].title);
+    inputTitle.setAttribute('value', ProjectManager.projects[projectIndex].todos[todoIndex].title);
     inputTitle.setAttribute('id', 'title');
     inputTitle.setAttribute('maxLength', 32);
     labelInputTitle.appendChild(labelTitle);
@@ -157,7 +161,7 @@ export class HtmlGenerator {
     labelDescription.textContent = 'Description';
     labelDescription.setAttribute('for', 'description');
     const inputDescription = document.createElement('textarea');
-    inputDescription.value = ProjectManager.getProjects()[projectIndex].todos[todoIndex].description;
+    inputDescription.value = ProjectManager.projects[projectIndex].todos[todoIndex].description;
     inputDescription.setAttribute('id', 'description');
     inputDescription.setAttribute('cols', 45);
     inputDescription.setAttribute('rows', 6);
@@ -172,7 +176,7 @@ export class HtmlGenerator {
     const inputDate = document.createElement('input');
     inputDate.setAttribute('id', 'date');
     inputDate.setAttribute('type', 'date');
-    inputDate.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].dueDate.toISOString().substring(0, 10));
+    inputDate.setAttribute('value', ProjectManager.projects[projectIndex].todos[todoIndex].dueDate.toISOString().substring(0, 10));
     labelInputDate.appendChild(labelDate);
     labelInputDate.appendChild(inputDate);
 
@@ -226,7 +230,7 @@ export class HtmlGenerator {
     labelHigh.appendChild(radioHigh);
     radios.appendChild(labelHigh);
 
-    const priorityLevel = ProjectManager.getProjects()[projectIndex].todos[todoIndex].priority;
+    const priorityLevel = ProjectManager.projects[projectIndex].todos[todoIndex].priority;
     switch (priorityLevel) {
       case 'none':
         radioNone.checked = true;

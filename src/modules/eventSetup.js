@@ -23,7 +23,7 @@ export class EventSetup {
     if (projectHeads) {
       for (let i = 0; i < projectHeads.length; i++) {
         projectHeads[i].addEventListener('blur', () => {
-          ProjectManager.getProjects()[projectHeads[i].getAttribute('project-index')].name = projectHeads[i].textContent;
+          ProjectManager.projects[projectHeads[i].getAttribute('project-index')].name = projectHeads[i].textContent;
           PageManager.update();
         });
       }
@@ -53,7 +53,7 @@ export class EventSetup {
     if (closeIcons) {
       for (let i = 0; i < closeIcons.length; i++) {
         closeIcons[i].addEventListener('click', () => {
-          ProjectManager.getProjects()[closeIcons[i].getAttribute("project-index")].removeTodo(closeIcons[i].getAttribute("todo-index"));          
+          ProjectManager.projects[closeIcons[i].getAttribute("project-index")].removeTodo(closeIcons[i].getAttribute("todo-index"));          
         });
       }
     }
@@ -63,7 +63,7 @@ export class EventSetup {
     if (addTodos) {
       for (let i = 0; i < addTodos.length; i++) {
         addTodos[i].addEventListener('click', () => {
-          ProjectManager.getProjects()[addTodos[i].getAttribute("project-index")].addTodo(new Todo("New to-do!"));
+          ProjectManager.projects[addTodos[i].getAttribute("project-index")].addTodo(new Todo("New to-do!"));
         });
       }
     }
@@ -73,14 +73,16 @@ export class EventSetup {
     if (markDone) {
       for (let i = 0; i < markDone.length; i++) {
         markDone[i].addEventListener('click', () => {
-          ProjectManager.getProjects()[markDone[i].getAttribute('project-index')].todos[markDone[i].getAttribute('todo-index')].toggleCompleted();
+          ProjectManager.projects[markDone[i].getAttribute('project-index')].todos[markDone[i].getAttribute('todo-index')].toggleCompleted();
         });
       }
     }
 
     // Add event listener to + project
     const addProjectBtn = document.querySelector('#addProject');
-    addProjectBtn.addEventListener('click', ProjectManager.addProject);
+    addProjectBtn.addEventListener('click', () => {
+      ProjectManager.addProject();
+    });
   }
 
   static todoEventSetup() {
@@ -95,7 +97,7 @@ export class EventSetup {
     const saveBtn = document.querySelector('.todopage button');
     saveBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const todoObj = ProjectManager.getProjects()[saveBtn.getAttribute('project-index')].todos[saveBtn.getAttribute('todo-index')];
+      const todoObj = ProjectManager.projects[saveBtn.getAttribute('project-index')].todos[saveBtn.getAttribute('todo-index')];
       const title = document.querySelector('#title').value;
       const description = document.querySelector('#description').value;
       const dateValue = document.querySelector('#date').value;

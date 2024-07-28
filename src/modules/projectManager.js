@@ -3,27 +3,19 @@ import { Project } from './project.js';
 
 export class ProjectManager {
 
-  static #projects = [new Project('project')];
+  static projects = [];
 
-  static getProjects() {
-    return ProjectManager.#projects;
-  }
-
-  static setProjects(projects) {
-    this.#projects = projects;
-  }
-
-  static addProject() {
-    ProjectManager.#projects.push(new Project('project'));
+  static addProject(name = 'project') {
+    ProjectManager.projects.push(new Project(name));
     PageManager.update();
   }
   
   static removeProject(index) {
-    if (index >= (ProjectManager.#projects.length)) {
-      console.log(`Tried to remove index ${index} but we only have ${ProjectManager.#projects.length} projects!`);
+    if (index >= (ProjectManager.projects.length)) {
+      console.log(`Tried to remove index ${index} but we only have ${ProjectManager.projects.length} projects!`);
       return;
     }
-    ProjectManager.#projects.splice(index, 1);
+    ProjectManager.projects.splice(index, 1);
     PageManager.update();
   }
 }

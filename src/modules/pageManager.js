@@ -1,5 +1,6 @@
 import { HtmlGenerator } from "./htmlGenerator.js";
 import { EventSetup } from "./eventSetup.js";
+import { ProjectManager } from "./projectManager.js";
 
 export class PageManager {
 
@@ -25,6 +26,7 @@ export class PageManager {
   }
 
   static update() {
+    localStorage.setItem('projects', JSON.stringify(ProjectManager.projects));
     PageManager.setCurrentPage('needs update');
     PageManager.goToHome();
   }
