@@ -63,7 +63,7 @@ export class EventSetup {
     if (addTodos) {
       for (let i = 0; i < addTodos.length; i++) {
         addTodos[i].addEventListener('click', () => {
-          ProjectManager.getProjects()[addTodos[i].getAttribute("project-index")].addTodo(new Todo("Added todo!"));
+          ProjectManager.getProjects()[addTodos[i].getAttribute("project-index")].addTodo(new Todo("New to-do!"));
         });
       }
     }

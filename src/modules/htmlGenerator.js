@@ -56,6 +56,11 @@ export class HtmlGenerator {
     const name = document.createElement("h2");
     name.classList.add("name");
     name.setAttribute('contenteditable', true);
+    name.addEventListener('input', () => {
+      if (name.innerText.length > 16) {
+        name.innerText = name.innerText.slice(0, 16);
+      }
+    })
     name.setAttribute('project-index', projectIndex);
     name.textContent = project.name;
   
@@ -76,11 +81,7 @@ export class HtmlGenerator {
     todos.classList.add('todos');
 
     for (let i = 0; i < project.todos.length; i++) {
-      const generatedTodo = this.todoGenerate(project.todos[i], i, projectIndex);
-      if ((i % 2) != 0) {
-        generatedTodo.classList.add('alternating');
-      }
-      todos.appendChild(generatedTodo);
+      todos.appendChild(this.todoGenerate(project.todos[i], i, projectIndex));
     }
 
     const addTodo = document.createElement('btn');
@@ -146,7 +147,7 @@ export class HtmlGenerator {
     inputTitle.setAttribute('type', 'text');
     inputTitle.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].title);
     inputTitle.setAttribute('id', 'title');
-    inputTitle.setAttribute('maxLength', 35);
+    inputTitle.setAttribute('maxLength', 32);
     labelInputTitle.appendChild(labelTitle);
     labelInputTitle.appendChild(inputTitle);
 

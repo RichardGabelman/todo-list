@@ -258,6 +258,7 @@ fieldset label {
   color: black;
   font-size: 1rem;
   font-weight: 500;
+  overflow-wrap: break-word;
 }
 
 .todo div {
@@ -282,14 +283,14 @@ fieldset label {
 }
 
 .medium {
-  background-color: orange;
+  background-color: yellow;
 }
 
 .high {
   background-color: var(--primary-color);
 }
 
-.alternating {
+.todo:nth-of-type(even) {
   background-color: rgb(242, 242, 242);
 }
 
