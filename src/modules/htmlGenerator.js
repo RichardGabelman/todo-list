@@ -76,7 +76,11 @@ export class HtmlGenerator {
     todos.classList.add('todos');
 
     for (let i = 0; i < project.todos.length; i++) {
-      todos.appendChild(this.todoGenerate(project.todos[i], i, projectIndex));
+      const generatedTodo = this.todoGenerate(project.todos[i], i, projectIndex);
+      if ((i % 2) != 0) {
+        generatedTodo.classList.add('alternating');
+      }
+      todos.appendChild(generatedTodo);
     }
 
     const addTodo = document.createElement('btn');

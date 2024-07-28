@@ -289,6 +289,10 @@ fieldset label {
   background-color: var(--primary-color);
 }
 
+.alternating {
+  background-color: rgb(242, 242, 242);
+}
+
 .todo svg {
   cursor: pointer;
   width: 25px;
