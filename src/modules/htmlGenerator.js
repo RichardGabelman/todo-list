@@ -1,4 +1,5 @@
 import { ProjectManager } from './projectManager.js';
+import { format } from "date-fns";
 
 export class HtmlGenerator {
 
@@ -25,7 +26,7 @@ export class HtmlGenerator {
     checkTitle.appendChild(title);
 
     const deadline = document.createElement('h4');
-    deadline.textContent = todo.dueDate.toISOString().substring(0, 10);
+    deadline.textContent = format(todo.dueDate, 'PP');
 
     const closeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     closeIcon.setAttribute('viewBox', '0 0 24 24');
@@ -53,6 +54,8 @@ export class HtmlGenerator {
     head.classList.add('header');
     const name = document.createElement("h2");
     name.classList.add("name");
+    name.setAttribute('contenteditable', true);
+    name.setAttribute('project-index', projectIndex);
     name.textContent = project.name;
   
     const closeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");

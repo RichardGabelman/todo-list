@@ -1,5 +1,6 @@
 import { PageManager } from "./pageManager.js";
 import { ProjectManager } from "./projectManager.js";
+import { Project } from "./project.js";
 import { Todo } from "./todo.js";
 
 export class EventSetup {
@@ -17,6 +18,15 @@ export class EventSetup {
       return;
     }
     // TODO: Add event listeners to each project header that expands to project view
+    // Update project name when done editing
+    const projectHeads = document.querySelectorAll('.name');
+    if (projectHeads) {
+      for (let i = 0; i < projectHeads.length; i++) {
+        projectHeads[i].addEventListener('blur', () => {
+          ProjectManager.getProjects()[projectHeads[i].getAttribute('project-index')].name = projectHeads[i].textContent;
+        });
+      }
+    }
     // Add event listeners to project closers
     const projectClose = document.querySelectorAll('.header svg');
     if (projectClose) {

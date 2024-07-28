@@ -10,7 +10,6 @@ export class ProjectManager {
   }
 
   static addProject() {
-    console.log(ProjectManager.#projects);
     ProjectManager.#projects.push(new Project('project'));
     PageManager.update();
   }
