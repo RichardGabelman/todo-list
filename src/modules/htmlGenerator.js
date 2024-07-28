@@ -24,9 +24,11 @@ export class HtmlGenerator {
     checkTitle.appendChild(checkbox);
     checkTitle.appendChild(title);
 
+    const deadline = document.createElement('h4');
+    deadline.textContent = todo.dueDate.toISOString().substring(0, 10);
+
     const closeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     closeIcon.setAttribute('viewBox', '0 0 24 24');
-
     const svgTitle = document.createElementNS("http://www.w3.org/2000/svg", 'title');
     svgTitle.textContent = "close";
     closeIcon.appendChild(svgTitle);
@@ -37,6 +39,7 @@ export class HtmlGenerator {
     closeIcon.setAttribute("project-index", projectIndex);
 
     todoDiv.appendChild(checkTitle);
+    todoDiv.appendChild(deadline);
     todoDiv.appendChild(closeIcon);
 
     return todoDiv;

@@ -177,22 +177,22 @@ header svg {
 }
 
 .todo {
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
   display: flex;
   padding: 8px 12px;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   border-bottom: 1px solid lightgray;
 }
 
 .checkTitle {
-  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
   font-weight: 200;
   font-size: 0.9rem;
   display: flex;
   gap: 12px;
   color: black;
-  max-width: 200px;
+  width: 175px;
 }
 
 .checkTitle h3 {
@@ -211,6 +211,11 @@ header svg {
 
 .todo svg:hover {
   fill: red;
+}
+
+.todo h4 {
+  color: gray;
+  font-size: 0.9rem;
 }
 
 .header,
