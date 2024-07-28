@@ -83,12 +83,12 @@ header svg {
   flex-direction: column;
   max-width: max-content;
   min-width: min-content;
-  height: 100%;
+  height: max-content;
   padding: 30px 50px;
   font-size: 1.3rem;
   border: 1px solid black;
   border-radius: 10px;
-  gap: 35px;
+  gap: 40px;
   background-color: white;
 }
 
@@ -101,15 +101,17 @@ header svg {
 }
 
 .labelInput input:focus,
-.labelInput textarea:focus {
+.labelInput textarea:focus,
+fieldset div {
   outline-width: 0;
   box-shadow: 2px 2px 4px black;
 }
 
 .labelInput input,
 .labelInput textarea {
-  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
   padding: 3px 8px;
   width: 25rem;
   border-radius: 10px;
@@ -117,6 +119,31 @@ header svg {
   box-shadow: 2px 2px 2px gray;
   text-align: center;
   resize: none;
+}
+
+fieldset {
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  border: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px gray;
+}
+
+fieldset label {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .homepage {
@@ -157,6 +184,19 @@ header svg {
   justify-content: center;
 }
 
+.name {
+  cursor: pointer;
+}
+
+.name:focus {
+  background-color: white;
+  color: black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 2px 8px;
+}
+
 .header svg {
   position: absolute;
   width: 25px;
@@ -177,6 +217,8 @@ header svg {
 }
 
 .todo {
+  z-index: 0;
+  position: relative;
   font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
   display: flex;
   padding: 8px 12px;
@@ -186,21 +228,35 @@ header svg {
   border-bottom: 1px solid lightgray;
 }
 
-.checkTitle {
-  font-weight: 200;
-  font-size: 0.9rem;
-  display: flex;
-  gap: 12px;
-  color: black;
+.todo h3,
+.todo input {
+  cursor: pointer;
+}
+
+.todo input {
+  z-index: 2;
+  margin-right: 8px;
+}
+
+.todo h3 {
   width: 175px;
+  align-items: center;
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-.checkTitle h3 {
-  cursor: pointer;
-}
-
-.checkTitle input {
-  cursor: pointer;
+.todo div {
+  border-right: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 38px;
 }
 
 .todo svg {

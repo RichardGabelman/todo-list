@@ -38,7 +38,7 @@ export class EventSetup {
     }
 
     // Add event listeners to each todo item that expands to todo view
-    const todoNames = document.querySelectorAll('.checkTitle h3');
+    const todoNames = document.querySelectorAll('.todo h3');
     if (todoNames) {
       for (let i = 0; i < todoNames.length; i++) {
         todoNames[i].addEventListener('click', () => {
@@ -68,7 +68,7 @@ export class EventSetup {
     }
 
     // Add event listeners to todo checkboxes
-    const markDone = document.querySelectorAll('.checkTitle input');
+    const markDone = document.querySelectorAll('.todo input');
     if (markDone) {
       for (let i = 0; i < markDone.length; i++) {
         markDone[i].addEventListener('click', () => {

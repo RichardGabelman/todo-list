@@ -7,9 +7,7 @@ export class HtmlGenerator {
     const todoDiv = document.createElement("li");
     todoDiv.classList.add('todo');
 
-    const checkTitle = document.createElement("div");
-    checkTitle.classList.add('checkTitle');
-
+    const priorityColor = document.createElement('div');
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.setAttribute("project-index", projectIndex);
@@ -22,8 +20,9 @@ export class HtmlGenerator {
       title.classList.add('completed');
       checkbox.checked = true;
     }
-    checkTitle.appendChild(checkbox);
-    checkTitle.appendChild(title);
+    todoDiv.appendChild(priorityColor);
+    todoDiv.appendChild(checkbox);
+    todoDiv.appendChild(title);
 
     const deadline = document.createElement('h4');
     deadline.textContent = format(todo.dueDate, 'PP');
@@ -39,7 +38,6 @@ export class HtmlGenerator {
     closeIcon.setAttribute("todo-index", todoIndex);
     closeIcon.setAttribute("project-index", projectIndex);
 
-    todoDiv.appendChild(checkTitle);
     todoDiv.appendChild(deadline);
     todoDiv.appendChild(closeIcon);
 
@@ -169,9 +167,77 @@ export class HtmlGenerator {
     labelInputDate.appendChild(labelDate);
     labelInputDate.appendChild(inputDate);
 
+    const field = document.createElement('fieldset');
+    const priority = document.createElement('legend');
+    priority.textContent = "Priority";
+    field.appendChild(priority);
+
+    const radios = document.createElement('div');
+    const labelNone = document.createElement('label');
+    labelNone.textContent = "None";
+    labelNone.setAttribute('for', 'none');
+    const radioNone = document.createElement('input');
+    radioNone.setAttribute('name', 'priority');
+    radioNone.setAttribute('id', 'none');
+    radioNone.setAttribute('value', 'none');
+    radioNone.setAttribute('type', 'radio');
+    labelNone.appendChild(radioNone);
+    radios.appendChild(labelNone);
+
+    const labelLow = document.createElement('label');
+    labelLow.textContent = "Low";
+    labelLow.setAttribute('for', 'low');
+    const radioLow = document.createElement('input');
+    radioLow.setAttribute('name', 'priority');
+    radioLow.setAttribute('id', 'low');
+    radioLow.setAttribute('value', 'low');
+    radioLow.setAttribute('type', 'radio');
+    labelLow.appendChild(radioLow);
+    radios.appendChild(labelLow);
+
+    const labelMedium = document.createElement('label');
+    labelMedium.textContent = "Medium";
+    labelMedium.setAttribute('for', 'medium');
+    const radioMedium = document.createElement('input');
+    radioMedium.setAttribute('name', 'priority');
+    radioMedium.setAttribute('id', 'medium');
+    radioMedium.setAttribute('value', 'medium');
+    radioMedium.setAttribute('type', 'radio');
+    labelMedium.appendChild(radioMedium);
+    radios.appendChild(labelMedium);
+
+    const labelHigh = document.createElement('label');
+    labelHigh.textContent = "High";
+    labelHigh.setAttribute('for', 'high');
+    const radioHigh = document.createElement('input');
+    radioHigh.setAttribute('name', 'priority');
+    radioHigh.setAttribute('id', 'high');
+    radioHigh.setAttribute('value', 'high');
+    radioHigh.setAttribute('type', 'radio');
+    labelHigh.appendChild(radioHigh);
+    radios.appendChild(labelHigh);
+
+    const priorityLevel = ProjectManager.getProjects()[projectIndex].todos[todoIndex].priority;
+    switch (priorityLevel) {
+      case 'none':
+        radioNone.checked = true;
+        break;
+      case 'low':
+        radioLow.checked = true;
+        break;
+      case 'medium':
+        radioMedium.checked = true;
+        break;
+      case 'high':
+        radioHigh.checked = true;
+        break;
+    }
+    field.appendChild(radios);
+
     form.appendChild(labelInputTitle);
     form.appendChild(labelInputDescription);
     form.appendChild(labelInputDate);
+    form.appendChild(field);
 
 
     todoPage.appendChild(form);
