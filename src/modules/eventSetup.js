@@ -1,7 +1,7 @@
 import { PageManager } from "./pageManager.js";
 import { ProjectManager } from "./projectManager.js";
 import { Todo } from "./todo.js";
-import { format, parseISO } from "date-fns";
+import { parseISO } from "date-fns";
 
 export class EventSetup {
 
@@ -24,6 +24,7 @@ export class EventSetup {
       for (let i = 0; i < projectHeads.length; i++) {
         projectHeads[i].addEventListener('blur', () => {
           ProjectManager.getProjects()[projectHeads[i].getAttribute('project-index')].name = projectHeads[i].textContent;
+          PageManager.update();
         });
       }
     }
@@ -104,7 +105,7 @@ export class EventSetup {
       todoObj.description = description;
       todoObj.dueDate = parseISO(dateValue);
       todoObj.priority = priority;
-      PageManager.goToHome();
+      PageManager.update();
     });
   }
 }
