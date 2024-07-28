@@ -10,9 +10,6 @@ html, body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-body {
   background-color: whitesmoke;
 }
 
@@ -22,7 +19,7 @@ header {
   align-items: center;
   padding: 10px;
   gap: 10px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   background-color: var(--primary-color);
   box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.15);
 }
@@ -43,7 +40,7 @@ header h1 {
 
 header svg {
   cursor: pointer;
-  width: 65px;
+  width: 60px;
   fill: white;
 }
 
@@ -65,13 +62,14 @@ header svg {
 }
 
 .todopage svg {
+  position: absolute;
+  left: 10px;
+  top: 10px;
   border: 1px solid black;
+  border: none;
   border-radius: 50%;
-  width: 50px;
+  width: 40px;
   align-self: flex-start;
-  box-shadow: 2px 2px 2px gray;
-  margin-bottom: -55px;
-  margin-left: -5%;
   background-color: white;
 }
 
@@ -80,15 +78,16 @@ header svg {
 }
 
 .todopage form {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: max-content;
+  max-width: max-content;
+  min-width: min-content;
   height: 100%;
-  padding: 20px 40px;
+  padding: 30px 50px;
   font-size: 1.3rem;
   border: 1px solid black;
-  box-shadow: 2px 2px 2px gray;
-  border-radius: 5px;
+  border-radius: 10px;
   gap: 35px;
   background-color: white;
 }
@@ -132,6 +131,7 @@ header svg {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
   padding: 25px;
   gap: 20px;
 }
@@ -140,7 +140,7 @@ header svg {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  width: calc(100%/6);
+  width: max-content;
   max-height: 100%;
   box-shadow: 2px 2px 2px gray;
 }
@@ -181,6 +181,7 @@ header svg {
   padding: 8px 12px;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   border-bottom: 1px solid lightgray;
 }
 
@@ -191,6 +192,7 @@ header svg {
   display: flex;
   gap: 12px;
   color: black;
+  max-width: 200px;
 }
 
 .checkTitle h3 {
@@ -218,6 +220,7 @@ header svg {
   width: 100%;
   color: white;
   border: 1px solid black;
+  min-width: 200px;
 }
 
 .footer {

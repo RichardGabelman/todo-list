@@ -121,9 +121,10 @@ export class HtmlGenerator {
     const path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
     path.setAttribute('d', "M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z");
     backIcon.appendChild(path);
-    todoPage.appendChild(backIcon);
 
     const form = document.createElement('form');
+
+    form.appendChild(backIcon);
 
     const labelInputTitle = document.createElement('div');
     labelInputTitle.classList.add('labelInput');
@@ -151,8 +152,20 @@ export class HtmlGenerator {
     labelInputDescription.appendChild(labelDescription);
     labelInputDescription.appendChild(inputDescription);
 
+    const labelInputDate = document.createElement('div');
+    labelInputDate.classList.add('labelInput');
+    const labelDate = document.createElement('label');
+    labelDate.textContent = ('Due Date');
+    labelDate.setAttribute('for', 'date');
+    const inputDate = document.createElement('input');
+    inputDate.setAttribute('type', 'date');
+    inputDate.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].dueDate.toISOString().substring(0, 10));
+    labelInputDate.appendChild(labelDate);
+    labelInputDate.appendChild(inputDate);
+
     form.appendChild(labelInputTitle);
     form.appendChild(labelInputDescription);
+    form.appendChild(labelInputDate);
 
 
     todoPage.appendChild(form);
