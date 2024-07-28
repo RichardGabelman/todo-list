@@ -165,6 +165,7 @@ export class HtmlGenerator {
     labelDate.textContent = ('Due Date');
     labelDate.setAttribute('for', 'date');
     const inputDate = document.createElement('input');
+    inputDate.setAttribute('id', 'date');
     inputDate.setAttribute('type', 'date');
     inputDate.setAttribute('value', ProjectManager.getProjects()[projectIndex].todos[todoIndex].dueDate.toISOString().substring(0, 10));
     labelInputDate.appendChild(labelDate);
@@ -239,6 +240,8 @@ export class HtmlGenerator {
 
     const save = document.createElement('button');
     save.textContent = 'Save';
+    save.setAttribute('project-index', projectIndex);
+    save.setAttribute('todo-index', todoIndex);
 
     form.appendChild(labelInputTitle);
     form.appendChild(labelInputDescription);

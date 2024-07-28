@@ -90,5 +90,20 @@ export class EventSetup {
     const backArrow = document.querySelector('.todopage svg');
     backArrow.addEventListener('click', PageManager.goToHome);
 
+    const saveBtn = document.querySelector('.todopage button');
+    saveBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const todoObj = ProjectManager.getProjects()[saveBtn.getAttribute('project-index')].todos[saveBtn.getAttribute('todo-index')];
+      const title = document.querySelector('#title').value;
+      const description = document.querySelector('#description').value;
+      const dateValue = document.querySelector('#date').value;
+      const priority = document.querySelector('input:checked').value;
+
+      todoObj.title = title;
+      todoObj.description = description;
+      todoObj.dueDate = new Date(dateValue);
+      todoObj.priority = priority;
+      PageManager.goToHome();
+    });
   }
 }
