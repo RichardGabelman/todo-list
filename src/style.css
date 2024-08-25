@@ -196,6 +196,7 @@ fieldset label {
   padding-top: 4px;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid lightgray;
 }
 
 .name {
@@ -315,7 +316,6 @@ fieldset label {
   font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
   width: 100%;
   color: white;
-  border: 1px solid black;
   min-width: 200px;
 }
 
